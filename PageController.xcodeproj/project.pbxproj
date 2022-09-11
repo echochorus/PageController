@@ -16,6 +16,7 @@
 		1FBDE3D028A01F6F005AFE53 /* PageControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDE3CF28A01F6F005AFE53 /* PageControllerTests.swift */; };
 		1FBDE3DA28A01F6F005AFE53 /* PageControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDE3D928A01F6F005AFE53 /* PageControllerUITests.swift */; };
 		1FBDE3DC28A01F6F005AFE53 /* PageControllerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDE3DB28A01F6F005AFE53 /* PageControllerUITestsLaunchTests.swift */; };
+		1FBDE3E928A049CB005AFE53 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDE3E828A049CB005AFE53 /* PageControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1FBDE3D528A01F6F005AFE53 /* PageControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PageControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FBDE3D928A01F6F005AFE53 /* PageControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerUITests.swift; sourceTree = "<group>"; };
 		1FBDE3DB28A01F6F005AFE53 /* PageControllerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1FBDE3E828A049CB005AFE53 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				1FBDE3B828A01F6C005AFE53 /* AppDelegate.swift */,
 				1FBDE3BA28A01F6C005AFE53 /* SceneDelegate.swift */,
 				1FBDE3BC28A01F6C005AFE53 /* ViewController.swift */,
+				1FBDE3E828A049CB005AFE53 /* PageControl.swift */,
 				1FBDE3BE28A01F6C005AFE53 /* Main.storyboard */,
 				1FBDE3C128A01F6F005AFE53 /* Assets.xcassets */,
 				1FBDE3C328A01F6F005AFE53 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				1FBDE3BD28A01F6C005AFE53 /* ViewController.swift in Sources */,
 				1FBDE3B928A01F6C005AFE53 /* AppDelegate.swift in Sources */,
+				1FBDE3E928A049CB005AFE53 /* PageControl.swift in Sources */,
 				1FBDE3BB28A01F6C005AFE53 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
