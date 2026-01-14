@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
 
         // sample pages:
-        let pages: [PageContent] = [
+        let pages: [any PageContent] = [
             // Welcome page
             GenericPage(
                 id: "welcome",
@@ -58,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 imageName: "checkmark.circle",
                 actionTitle: "Continue to App",
                 skipTitle: nil,
-                onAction: { [weak self] in
+                onAction: { // [weak self] in
                     // Transition to main app starts here
                     print("Onboarding done.")
                     return .success

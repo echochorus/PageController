@@ -110,8 +110,8 @@ public final class PageControllerContainerViewController: UIViewController {
     }()
 
      
-    public init(pages: [PageContent],
-                theme: PageTheme,
+    public init(pages: [any PageContent],
+                theme: any PageTheme,
                 configuration: PageControllerConfiguration = PageControllerConfiguration()) {
         self.pageManager = PageManager(pages: pages)
         self.pageTheme = theme
@@ -120,7 +120,7 @@ public final class PageControllerContainerViewController: UIViewController {
     }
 
     public init(manager: PageManager,
-                theme: PageTheme,
+                theme: any PageTheme,
                 configuration: PageControllerConfiguration = PageControllerConfiguration()) {
         self.pageManager = manager
         self.pageTheme = theme
@@ -388,12 +388,12 @@ extension PageControllerContainerViewController: UIPageViewControllerDelegate {
 // MARK: - PageContentViewControllerDelegate
 extension PageControllerContainerViewController: PageContentViewControllerDelegate {
     public func pageContentViewController(_ controller: PageContentViewController,
-                                          didTapActionForPage page: PageContent) {
+                                          didTapActionForPage page: any PageContent) {
         // Action button tapped - the controller will handle the async action
     }
 
     public func pageContentViewController(_ controller: PageContentViewController,
-                                          didTapSkipForPage page: PageContent) {
+                                          didTapSkipForPage page: any PageContent) {
         navigateToNext()
     }
 
@@ -402,7 +402,7 @@ extension PageControllerContainerViewController: PageContentViewControllerDelega
         switch result {
         case .success:
             // Check if this is a permission page with auto-advance
-            if let permissionPage = controller.pageContent as? PermissionPageContent,
+            if let permissionPage = controller.pageContent as? any PermissionPageContent,
                permissionPage.autoAdvanceOnGrant {
                 Task { @MainActor in
                     await pageManager.advanceAfterAction()

@@ -10,17 +10,17 @@ import UIKit
 /// Delegate for page content view controller events
 public protocol PageContentViewControllerDelegate: AnyObject {
     func pageContentViewController(_ controller: PageContentViewController,
-                                   didTapActionForPage page: PageContent)
+                                   didTapActionForPage page: any PageContent)
     func pageContentViewController(_ controller: PageContentViewController,
-                                   didTapSkipForPage page: PageContent)
+                                   didTapSkipForPage page: any PageContent)
     func pageContentViewController(_ controller: PageContentViewController,
                                    actionDidComplete result: PageActionResult)
 }
 
 public final class PageContentViewController: UIViewController { 
     public weak var delegate: PageContentViewControllerDelegate?
-    public private(set) var pageContent: PageContent
-    public private(set) var pageTheme: PageTheme
+    public private(set) var pageContent: any PageContent
+    public private(set) var pageTheme: any PageTheme
     public private(set) var pageIndex: Int
 
     private lazy var scrollView: UIScrollView = {
@@ -123,7 +123,7 @@ public final class PageContentViewController: UIViewController {
         return indicator
     }()
 
-    public init(pageContent: PageContent, pageTheme: PageTheme, pageIndex: Int) {
+    public init(pageContent: any PageContent, pageTheme: any PageTheme, pageIndex: Int) {
         self.pageContent = pageContent
         self.pageTheme = pageTheme
         self.pageIndex = pageIndex
