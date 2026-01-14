@@ -15,15 +15,12 @@ public protocol PageManagerDelegate: AnyObject {
 }
 
 public final class PageManager: ObservableObject {
-
-    // MARK: - Published Properties
-    @Published public private(set) var allPages: [PageContent]
-    @Published public private(set) var visiblePages: [PageContent] = []
+    @Published public private(set) var allPages: [any PageContent]
+    @Published public private(set) var visiblePages: [any PageContent] = []
     @Published public private(set) var currentIndex: Int = 0
     @Published public private(set) var isLoading: Bool = false
 
-    // MARK: - Computed Properties
-    public var currentPage: PageContent? {
+    public var currentPage: (any PageContent)? {
         guard currentIndex >= 0 && currentIndex < visiblePages.count else { return nil }
         return visiblePages[currentIndex]
     }
@@ -57,16 +54,15 @@ public final class PageManager: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    public init(pages: [PageContent] = []) {
+    public init(pages: [any PageContent] = []) {
         self.allPages = pages
     }
-
-    // MARK: - Page Management
-    public func addPages(_ pages: [PageContent]) {
+ 
+    public func addPages(_ pages: [any PageContent]) {
         allPages.append(contentsOf: pages)
     }
 
-    public func insertPage(_ page: PageContent, at index: Int) {
+    public func insertPage(_ page: any PageContent, at index: Int) {
         allPages.insert(page, at: min(index, allPages.count))
     }
 
@@ -153,7 +149,7 @@ extension PageManager {
         guard let currentPage = currentPage else { return true }
 
         // For permission pages, check if permission was granted
-        if let permissionPage = currentPage as? PermissionPageContent {
+        if let permissionPage = currentPage as? (any PermissionPageContent) {
             let status = await permissionPage.currentStatus()
             return status == .authorized || status == .provisional
         }
@@ -161,7 +157,7 @@ extension PageManager {
         return true
     }
 
-    public func page(at index: Int) -> PageContent? {
+    public func page(at index: Int) -> (any PageContent)? {
         guard index >= 0 && index < visiblePages.count else { return nil }
         return visiblePages[index]
     }

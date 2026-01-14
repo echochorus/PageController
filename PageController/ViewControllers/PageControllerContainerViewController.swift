@@ -59,7 +59,7 @@ public final class PageControllerContainerViewController: UIViewController {
         let control = UIPageControl()
         control.translatesAutoresizingMaskIntoConstraints = false
         control.pageIndicatorTintColor = pageTheme.pageControlTintColor
-        control.currentPageIndicatorTintColor = .systemRed //pageTheme.imageTintColor
+        control.currentPageIndicatorTintColor = pageTheme.pageControlCurrentTintColor
         control.addTarget(self, action: #selector(pageControlValueChanged(_:)), for: .valueChanged)
         return control
     }()
@@ -80,6 +80,7 @@ public final class PageControllerContainerViewController: UIViewController {
         config.imagePlacement = .leading
         config.imagePadding = 4
         let button = UIButton(configuration: config)
+        button.tintColor = pageTheme.actionButtonBackgroundColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button
@@ -92,6 +93,7 @@ public final class PageControllerContainerViewController: UIViewController {
         config.imagePlacement = .trailing
         config.imagePadding = 4
         let button = UIButton(configuration: config)
+        button.tintColor = pageTheme.actionButtonBackgroundColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         return button
@@ -101,6 +103,7 @@ public final class PageControllerContainerViewController: UIViewController {
         var config = UIButton.Configuration.plain()
         config.title = "Skip"
         let button = UIButton(configuration: config)
+        button.tintColor = pageTheme.actionButtonBackgroundColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
         return button
@@ -132,7 +135,7 @@ public final class PageControllerContainerViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = configuration.backgroundColor //pageTheme.backgroundColour //configuration.backgroundColor
+        view.backgroundColor = pageTheme.backgroundColour //configuration.backgroundColor
         pageManager.delegate = self
 
         Task {
@@ -275,6 +278,7 @@ extension PageControllerContainerViewController {
             pageTheme: pageTheme,
             pageIndex: index
         )
+        vc.view.backgroundColor = pageTheme.backgroundColour
         vc.delegate = self
         return vc
     }

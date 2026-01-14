@@ -66,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             )
         ]
 
-        let pageTheme: PageTheme = PageControllerTheme(
+        let pageTheme: any PageTheme = PageControllerTheme(
             id: "grey-theme",
             backgroundColour: UIColor(hex: "#F5F5F7"), // Cool light grey
             titleColor: UIColor(hex: "#26262E"), // Deep charcoal
